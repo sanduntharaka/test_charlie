@@ -1,1 +1,8 @@
-<p>login works!</p>
+<div class="row align-items-center justify-content-center h-100 p-5">
+    <form class="form px-5" style="max-width: 400px;" >
+      <!-- <img src="https://static.wixstatic.com/media/76de08_4fb3836eb63b4803ba211bdf0fdaac31~mv2.gif" class="img-fluid mb-3" > -->
+      <input class="form-control mb-3" [(ngModel)]="user" placeholder="Utente" name="user">
+      <input class="form-control mb-3" [(ngModel)]="password" placeholder="Password" type="password" name="pwd">
+      <a class="btn btn-dark" data-test-id="loginButton"  (click)="onLogin()">Accedi</a>
+    </form>
+</div>
