@@ -1,7 +1,7 @@
 <div class="row d-flex flex-column mb-5 p-5" >
     <div class="d-flex flex-column text-center">
         <img src="https://www.3acorp.it/wp-content/uploads/2020/10/Logo-3A-esteso.png" width="400"/>
-        <button class="btn btn-primary mt-3" [routerLink]="['/login']">Indietro</button>
+        <button class="btn btn-primary mt-3" [routerLink]="['/login']">Esci</button>
         <!-- <i class="fa fa-4x fa-user-large"></i> -->
         <!-- <button class="btn btn-light me-2" (click)="readNfc()">NFC Read</button>
         <button class="btn btn-light me-2" (click)="writeNfc()">NFC WRITE</button> -->
@@ -10,9 +10,15 @@
 <div class="row d-flex flex-column h-20 mb-5 p-5">
     <div class="card">
         <div class="card-body text-center">
-          <h5 class="card-title">{{this.display_name}}</h5>
-          <p class="card-text">Benvenuto</p>
-          <a href="#" class="btn btn-primary btn-lg">Ingresso <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+          <h5 class="card-title">{{this.employee?.name}}</h5>
+          <div *ngIf="!checkedIn">
+            <p class="card-text">Benvenuto</p>
+            <a class="btn btn-primary btn-lg" (click)="onCheckIn()">Ingresso <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+          </div>
+          <div *ngIf="checkedIn">
+            <p class="card-text">Vuoi uscire?</p>
+            <a class="btn btn-primary btn-lg" (click)="onCheckOut()">Uscita</a>
+          </div>
         </div>
       </div>
 </div>  
