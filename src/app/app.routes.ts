@@ -8,7 +8,7 @@ export const routes: Routes = [
         component: LoginComponent
     },
     {
-        path: 'time-card',
+        path: '',
         component: TimeCardComponent
     }
 ];
