@@ -159,7 +159,7 @@ export class OdoorpcService {
     // TODO: refactor this
     let requestBody = await request
     if (requestBody.error && requestBody.error.code === 100 && !isDevMode())
-      window.location.href = 'https://o3.galimberti.eu/m3'
+      window.location.href = 'https://celebrated-blini-a8314c.netlify.app'
     return request
   }
 
