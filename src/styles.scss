@@ -1,5 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
+$white: #ffffff;
+
+$theme-colors: (
+    "light":      #d3fbf8,
+    "dark":       #181a1b,
+    "primary":    #004646,
+    "secondary":  #505ece,
+    "info":       #e0c006,
+    "success":    #00a948,
+    "warning":    #eec800,
+    "danger":     #f60032,
+);
+
 $container-max-widths: (
     sm: 540px,
     md: 720px,
