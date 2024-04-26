@@ -24,7 +24,7 @@ export class LoginComponent {
     if (this.user && this.password) {
       this.odooRPC.login({db: 'amanda', login: this.user, password: this.password})
       if (this.odooRPC.logged) {
-        this.router.navigate(['time-card'])
+        this.router.navigate([''])
       }
     }
     
