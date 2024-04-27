@@ -19,10 +19,12 @@ export class LoginComponent {
 
   constructor(private odooRPC: OdoorpcService, private router: Router) {}
 
-  onLogin() {
+  async onLogin() {
     this.loading = true
     if (this.user && this.password) {
-      this.odooRPC.login({db: 'amanda', login: this.user, password: this.password})
+      let x = await this.odooRPC.login({db: 'amanda', login: this.user, password: this.password})
+
+      
       if (this.odooRPC.logged) {
         this.router.navigate([''])
       }
