@@ -55,6 +55,15 @@ export class OdoorpcService {
     return x
   }
 
+  async logout() {
+    this.httpClient.get(this.odooServer + '/api/web/session/logout').subscribe(result => {
+      
+    })
+
+    this.router.navigate(['login'])
+
+  }
+
   async getSessionInfo() {
     return await this.sendRequest('/api/web/session/get_session_info',{});
   }

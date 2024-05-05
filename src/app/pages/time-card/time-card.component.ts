@@ -5,6 +5,7 @@ import { OdooEntityManager } from '../../shared/services/odoo-entity-manager.ser
 import { HrEmployee } from '../../models/hr-employee.model';
 import { firstValueFrom } from 'rxjs';
 import { NgIf } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-time-card',
@@ -14,7 +15,6 @@ import { NgIf } from '@angular/common';
   styleUrl: './time-card.component.scss'
 })
 export class TimeCardComponent implements OnInit{
-
 
   display_name = ""
   employee?: HrEmployee
@@ -26,6 +26,11 @@ export class TimeCardComponent implements OnInit{
   async ngOnInit(): Promise<void> {
 
     let info = await this.odooRpc.getSessionInfo()
+
+    if (info.error && info.error.code === 100) {
+      this.router.navigate(['/login'])
+    }
+
     this.display_name = info.result.display_name
     this.userId = info.result.user_id
 
@@ -65,6 +70,11 @@ export class TimeCardComponent implements OnInit{
   async onCheckIn() {
     await this.odooEm.call2(this.employee.ODOO_MODEL, "attendance_manual", [[this.employee.id,], 'hr_employee.hr_attendance_action_my_attendances'])
     this.load()
+  }
+
+  async onLogout() {
+    await this.odooRpc.logout()
+    // this.router.navigate(['login'])
   }
 
 }
