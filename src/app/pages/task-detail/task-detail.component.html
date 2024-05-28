@@ -2,10 +2,11 @@
     <button class="btn btn-outline-white p-2" routerLink=".." type="button">
         <i class="fa fa-arrow-left text-white"></i>
     </button>
-    <span class="text-white p-2">Interventi</span>
+    <span class="text-white p-2">{{task.partner_id.name}}</span>
 </nav>
 
 <ul class="list-group">
+    <li class="list-group-item text-muted fst-italic text-sm-left">Seleziona le task completate</li>
     <li class="list-group-item d-inline-flex" *ngFor="let task of tasks">
         <span class="w-100 p-2">{{task.name}} </span>
         <div class="form-check form-switch">
@@ -21,6 +22,8 @@
     </li>
 </ul>
 
-<div class="d-flex align-items-center justify-content-center p-2">
-    <button class="btn btn-primary">Concludi Intervento</button>
+<div class="d-flex justify-content-center m-3">
+    <button class="btn btn-danger m-2 text-white" [routerLink]="['complete']">Annulla</button>
+    <button class="btn btn-primary m-2" [routerLink]="['complete']">Concludi</button>
 </div>
+

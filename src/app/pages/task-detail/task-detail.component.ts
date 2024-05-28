@@ -15,6 +15,7 @@ import { NgFor } from '@angular/common';
 })
 export class TaskDetailComponent implements OnInit {
 
+  task: ProjectTask
   tasks: ProjectTask[]
   id: any
 
@@ -35,6 +36,16 @@ export class TaskDetailComponent implements OnInit {
   async load() {
     let info = await this.odooRpc.getSessionInfo()
     let userId = info.result.user_id
+    
+    let t = await firstValueFrom(this.odooEm.search<ProjectTask>(new ProjectTask, [
+      ["id", "=", this.id]
+    ]))
+    if (t.length == 0)
+      alert('intervento non trovato')
+
+    this.task = t[0]
+
+
     this.tasks = await firstValueFrom(this.odooEm.search<ProjectTask>(new ProjectTask, [
       ["parent_id", "=", this.id]
     ]))
