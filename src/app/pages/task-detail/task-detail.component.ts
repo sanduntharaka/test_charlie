@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { OdooEntityManager } from '../../shared/services/odoo-entity-manager.service';
 import { ProjectTask } from '../../models/project-task.model';
 import { OdoorpcService } from '../../shared/services/odoorpc.service';
@@ -9,7 +9,7 @@ import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-task-detail',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, RouterLink],
   templateUrl: './task-detail.component.html',
   styleUrl: './task-detail.component.scss'
 })
