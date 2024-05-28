@@ -4,12 +4,12 @@ import { OdooEntityManager } from '../../shared/services/odoo-entity-manager.ser
 import { ProjectTask } from '../../models/project-task.model';
 import { OdoorpcService } from '../../shared/services/odoorpc.service';
 import { firstValueFrom } from 'rxjs';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-task-detail',
   standalone: true,
-  imports: [NgFor, RouterLink],
+  imports: [NgFor, RouterLink, CommonModule],
   templateUrl: './task-detail.component.html',
   styleUrl: './task-detail.component.scss'
 })
@@ -18,6 +18,7 @@ export class TaskDetailComponent implements OnInit {
   task: ProjectTask
   tasks: ProjectTask[]
   id: any
+  complete = false
 
   constructor(private route: ActivatedRoute, private odooEm: OdooEntityManager, private odooRpc: OdoorpcService, private router: Router) {}
 
@@ -51,5 +52,8 @@ export class TaskDetailComponent implements OnInit {
     ]))
   }
   
+  onComplete() {
+    this.complete = true
+  }
 
 }

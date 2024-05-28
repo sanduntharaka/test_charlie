@@ -6,7 +6,7 @@
 </nav>
 
 <ul class="list-group">
-    <li class="list-group-item d-flex flex-row" *ngFor="let task of tasks" >
+    <li class="list-group-item d-flex flex-row align-items-center" *ngFor="let task of tasks" >
         <span class="p-2">{{task.partner_id.name}} {{task.name}} </span>
         <a class="btn btn-primary ms-auto p-2" [routerLink]="['/task-list', task.id]"><i class="fa fa-arrow-right"></i></a>
     </li>
