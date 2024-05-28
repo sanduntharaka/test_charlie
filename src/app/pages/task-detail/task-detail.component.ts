@@ -5,11 +5,12 @@ import { ProjectTask } from '../../models/project-task.model';
 import { OdoorpcService } from '../../shared/services/odoorpc.service';
 import { firstValueFrom } from 'rxjs';
 import { CommonModule, NgFor } from '@angular/common';
+import { ProjectTaskType } from '../../models/project-task.type.model';
 
 @Component({
   selector: 'app-task-detail',
   standalone: true,
-  imports: [NgFor, RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule],
   templateUrl: './task-detail.component.html',
   styleUrl: './task-detail.component.scss'
 })
@@ -19,6 +20,7 @@ export class TaskDetailComponent implements OnInit {
   tasks: ProjectTask[]
   id: any
   complete = false
+  taskStages: ProjectTaskType[]
 
   constructor(private route: ActivatedRoute, private odooEm: OdooEntityManager, private odooRpc: OdoorpcService, private router: Router) {}
 
@@ -46,14 +48,19 @@ export class TaskDetailComponent implements OnInit {
 
     this.task = t[0]
 
+    this.taskStages = await firstValueFrom(this.odooEm.search<ProjectTaskType>(new ProjectTaskType, [
+      ["user_id", "=", false]
+    ]))
 
     this.tasks = await firstValueFrom(this.odooEm.search<ProjectTask>(new ProjectTask, [
       ["parent_id", "=", this.id]
     ]))
+
+
   }
   
   onComplete() {
-    this.complete = true
+    this.router.navigate(['complete'], { relativeTo: this.route })
   }
 
 }
