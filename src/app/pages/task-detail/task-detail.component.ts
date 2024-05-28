@@ -6,11 +6,12 @@ import { OdoorpcService } from '../../shared/services/odoorpc.service';
 import { firstValueFrom } from 'rxjs';
 import { CommonModule, NgFor } from '@angular/common';
 import { ProjectTaskType } from '../../models/project-task.type.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task-detail',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, FormsModule],
   templateUrl: './task-detail.component.html',
   styleUrl: './task-detail.component.scss'
 })
@@ -61,6 +62,10 @@ export class TaskDetailComponent implements OnInit {
   
   onComplete() {
     this.router.navigate(['complete'], { relativeTo: this.route })
+  }
+
+  moveTo($event) {
+    console.log($event)
   }
 
 }
