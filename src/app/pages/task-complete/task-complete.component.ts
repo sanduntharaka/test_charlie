@@ -11,6 +11,7 @@ import SignaturePad from 'signature_pad';
 })
 export class TaskCompleteComponent {
 
+
   @ViewChild('canvas') canvas: ElementRef<HTMLCanvasElement>;
   signaturePad: SignaturePad;
 
@@ -50,6 +51,10 @@ export class TaskCompleteComponent {
   window.addEventListener("resize", resizeCanvas);
   resizeCanvas();
     
+  }
+
+  onResetSignature() {
+    this.signaturePad.clear()
   }
 
 
