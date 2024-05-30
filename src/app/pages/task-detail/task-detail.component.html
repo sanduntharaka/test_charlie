@@ -12,9 +12,9 @@
             <span class="p-2 fw-bold">{{task.name}} </span>
         </div>
         <div class="d-flex">
-            <select class="form-select p-2" (change)="moveTo($event)">
+            <select class="form-select p-2" [(ngModel)]="task.stage_id" (ngModelChange)="moveTo($event, task)">
                 @for (stage of taskStages; track stage.id) {
-                    <option>{{stage.name}}</option>
+                    <option [ngValue]="stage">{{stage.name}}</option>
                 }
             </select> 
         </div>

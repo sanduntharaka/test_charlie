@@ -64,8 +64,12 @@ export class TaskDetailComponent implements OnInit {
     this.router.navigate(['complete'], { relativeTo: this.route })
   }
 
-  moveTo($event) {
-    console.log($event)
+  async moveTo($event, task: ProjectTask) {
+      await this.odooEm.update<ProjectTask>(task, {
+        'stage_id': task.stage_id.id
+      })
   }
+
+  
 
 }
