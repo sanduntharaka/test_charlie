@@ -41,8 +41,8 @@ export class TaskCompleteComponent {
       const ratio =  Math.max(window.devicePixelRatio || 1, 1);
 
       console.log("ration", ratio)
-      this.canvas.nativeElement.width = document.body.offsetWidth - 36 ;
-      this.canvas.nativeElement.height = document.body.offsetWidth ;
+      this.canvas.nativeElement.width = 300
+      this.canvas.nativeElement.height = 125 ;
       // this.canvas.nativeElement.getContext("2d")?.scale(ratio, ratio);
       this.signaturePad.clear(); // otherwise isEmpty() might return incorrect value
     }
