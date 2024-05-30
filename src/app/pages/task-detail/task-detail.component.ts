@@ -22,6 +22,7 @@ export class TaskDetailComponent implements OnInit {
   id: any
   complete = false
   taskStages: ProjectTaskType[]
+  taskTypeMap = {}
 
   constructor(private route: ActivatedRoute, private odooEm: OdooEntityManager, private odooRpc: OdoorpcService, private router: Router) {}
 
@@ -53,6 +54,10 @@ export class TaskDetailComponent implements OnInit {
       ["user_id", "=", false]
     ]))
 
+    this.taskStages.forEach(taskStage => {
+      this.taskTypeMap[taskStage.id] = taskStage.fold
+    })
+
     this.tasks = await firstValueFrom(this.odooEm.search<ProjectTask>(new ProjectTask, [
       ["parent_id", "=", this.id]
     ]))
@@ -70,6 +75,20 @@ export class TaskDetailComponent implements OnInit {
       })
   }
 
+  compareStage(t0 : ProjectTaskType, t1: ProjectTaskType) {
+    
+    if (!t0 || !t1) {
+      return false
+    }
+
+    return t0.id == t1.id
+  }
+
+  isComplete(task: ProjectTask) {
+    console.log(task.name)
+    console.log(this.taskTypeMap[task.stage_id.id])
+    return this.taskTypeMap[task.stage_id.id]
+  }
   
 
 }

@@ -10,9 +10,10 @@
     <li class="list-group-item" *ngFor="let task of tasks">
         <div class="d-flex justify-content-between">
             <span class="p-2 fw-bold">{{task.name}} </span>
+            <i class="fa fa-circle" [ngClass]="{'text-success': this.taskTypeMap[task.stage_id.id], 'text-danger': !this.taskTypeMap[task.stage_id.id]}"></i>
         </div>
         <div class="d-flex">
-            <select class="form-select p-2" [(ngModel)]="task.stage_id" (ngModelChange)="moveTo($event, task)">
+            <select class="form-select p-2" [compareWith]="compareStage" [(ngModel)]="task.stage_id" (ngModelChange)="moveTo($event, task)">
                 @for (stage of taskStages; track stage.id) {
                     <option [ngValue]="stage">{{stage.name}}</option>
                 }

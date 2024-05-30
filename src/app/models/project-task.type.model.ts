@@ -15,6 +15,7 @@ export class ProjectTaskType extends OdooModel implements OdooSerializableInterf
   name : string = ""
   user_id =""
   sequence: number = undefined
+  fold = false
 
   // description : string = ""
   // partner_id: OdooRelationship<Partner> = new OdooRelationship<Partner>()
