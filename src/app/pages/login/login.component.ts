@@ -26,7 +26,7 @@ export class LoginComponent {
 
       
       if (this.odooRPC.logged) {
-        this.router.navigate(['task-list'])
+        this.router.navigate(['welcome'])
       }
     }
     

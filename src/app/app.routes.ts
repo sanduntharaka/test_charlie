@@ -5,6 +5,7 @@ import { TaskListComponent } from './pages/task-list/task-list.component';
 import { TaskDetailComponent } from './pages/task-detail/task-detail.component';
 import { TaskCompleteComponent } from './pages/task-complete/task-complete.component';
 import { TaskCancelComponent } from './pages/task-cancel/task-cancel.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 export const routes: Routes = [
     {
@@ -13,7 +14,15 @@ export const routes: Routes = [
     },
     {
         path: '',
+        component: WelcomeComponent
+    },
+    {
+        path: 'time-card',
         component: TimeCardComponent
+    },
+    {
+        path: 'welcome',
+        component: WelcomeComponent
     },
     {
         path: 'task-list',

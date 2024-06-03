@@ -1,13 +1,11 @@
-<div class="row d-flex flex-column mb-5 p-5" >
-    <div class="d-flex flex-column text-center">
-        <img src="https://www.3acorp.it/wp-content/uploads/2020/10/Logo-3A-esteso.png" width="400"/>
-        <button class="btn btn-primary mt-3" (click)="onLogout()">Esci</button>
-        <!-- <i class="fa fa-4x fa-user-large"></i> -->
-        <!-- <button class="btn btn-light me-2" (click)="readNfc()">NFC Read</button>
-        <button class="btn btn-light me-2" (click)="writeNfc()">NFC WRITE</button> -->
-    </div>
-</div>
-<div class="row d-flex flex-column h-20 mb-5 p-5">
+<nav class="navbar bg-primary fixed-top navbar-expand-lg navbar-light shadow-sm fixed-top d-flex">
+  <button class="btn btn-outline-white p-2" routerLink="/welcome" type="button">
+      <i class="fa fa-arrow-left text-white"></i>
+  </button>
+  <span class="text-white p-2">Timbratura</span>
+</nav>
+
+<div class="d-flex flex-column h-20 mb-5 p-5">
     <div class="card">
         <div class="card-body text-center">
           <h5 class="card-title">{{this.employee?.name}}</h5>
