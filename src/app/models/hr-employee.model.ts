@@ -5,7 +5,6 @@ import { OdooMultiRelationship } from './odoo-multi-relationship.model';
 export class HrEmployee extends OdooModel implements OdooSerializableInterface<HrEmployee> {
   public readonly ODOO_MODEL = 'hr.employee';
 
-  barcode: string = ""
   name: string = ""
   attendance_state: string = ""
   hours_today : number = 0

@@ -72,9 +72,4 @@ export class TimeCardComponent implements OnInit{
     this.load()
   }
 
-  async onLogout() {
-    await this.odooRpc.logout()
-    // this.router.navigate(['login'])
-  }
-
 }
