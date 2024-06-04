@@ -1,6 +1,6 @@
 {
     "/api/**": {
-      "target" : "http://localhost:8069/",
+      "target" : "https://amanda.soluvia.io/",
       "secure": true,
       "changeOrigin": true,
       "logLevel":"debug",
@@ -8,4 +8,4 @@
         "^/api": ""
       }
     }
-  }
+}

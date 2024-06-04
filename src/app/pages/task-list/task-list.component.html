@@ -5,6 +5,15 @@
     <span class="text-white p-2">Interventi</span>
 </nav>
 
+
+<div class="d-flex flex-column align-items-center m-4">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        @for (stage of taskStages; track stage.id) {
+            <button type="button" (click)="onChangePersonalStage(stage)" class="btn" [ngClass]="{'btn-primary': selectedPersonalStage === stage.name}">{{stage.name}}</button>
+        }
+      </div>
+</div>
+
 <ul class="list-group">
     <li class="list-group-item d-flex flex-row align-items-center" *ngFor="let task of tasks" >
         <span class="p-2 fw-bold">{{task.partner_id.name}}</span>
