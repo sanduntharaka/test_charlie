@@ -7,6 +7,7 @@ import { firstValueFrom } from 'rxjs';
 import { CommonModule, NgFor } from '@angular/common';
 import { ProjectTaskType } from '../../models/project-task.type.model';
 import { FormsModule } from '@angular/forms';
+import { Partner } from '../../models/partner';
 
 @Component({
   selector: 'app-task-detail',
@@ -23,6 +24,7 @@ export class TaskDetailComponent implements OnInit {
   complete = false
   taskStages: ProjectTaskType[]
   taskTypeMap = {}
+  completedStages: ProjectTaskType[]
 
   constructor(private route: ActivatedRoute, private odooEm: OdooEntityManager, private odooRpc: OdoorpcService, private router: Router) {}
 
@@ -47,11 +49,17 @@ export class TaskDetailComponent implements OnInit {
     ]))
     if (t.length == 0)
       alert('intervento non trovato')
-
+    
     this.task = t[0]
+    await firstValueFrom(this.odooEm.resolveSingle(new Partner(), this.task.partner_id));
 
     this.taskStages = await firstValueFrom(this.odooEm.search<ProjectTaskType>(new ProjectTaskType, [
       ["user_id", "=", false]
+    ]))
+
+    this.completedStages = await firstValueFrom(this.odooEm.search<ProjectTaskType>(new ProjectTaskType, [
+      ["user_id", "=", false],
+      ["fold", "=", true]
     ]))
 
     this.taskStages.forEach(taskStage => {

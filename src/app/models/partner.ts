@@ -6,6 +6,8 @@ import { OdooSerializableInterface } from '../shared/interfaces/odoo-serializabl
 export class Partner extends OdooModel implements OdooSerializableInterface<Partner> {
     public readonly ODOO_MODEL = 'res.partner';
     name:string = ""
+    street:string = ""
+    city:string = ""
 
     create() {
         return new Partner()
