@@ -7,8 +7,8 @@
 
 <div class="card m-3">
     <div class="card-header">
-        <h5 class="card-title">{{task.name}}</h5>
-        <p class="text-muted">{{task.partner_id.value.street}} - {{task.partner_id.value.city}}</p>
+        <h5 class="card-title">{{task?.name}}</h5>
+        <p class="text-muted">{{task.partner_id.value?.street}} - {{task.partner_id.value?.city}}</p>
     </div>
 </div>
 
@@ -16,7 +16,7 @@
     <li class="list-group-item text-muted fst-italic text-sm-left">Seleziona le task completate</li>
     <li class="list-group-item" *ngFor="let task of tasks">
         <div class="d-flex justify-content-between">
-            <span class="p-2 fw-bold">{{task.name}} </span>
+            <span class="p-2 fw-bold">{{task?.name}} </span>
             <i class="fa fa-circle" [ngClass]="{'text-success': this.taskTypeMap[task.stage_id.id], 'text-danger': !this.taskTypeMap[task.stage_id.id]}"></i>
         </div>
         <div class="d-flex">

@@ -1,19 +1,42 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import SignaturePad from 'signature_pad';
+import { FormsModule } from '@angular/forms';
+import { CommonModule} from '@angular/common';
+import { OdooEntityManager } from '../../shared/services/odoo-entity-manager.service';
+import { OdooSerializableInterface } from '../../shared/interfaces/odoo-serializable-interface';
+import { ProjectTask } from '../../models/project-task.model';
 
 @Component({
   selector: 'app-task-complete',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,FormsModule,CommonModule],
   templateUrl: './task-complete.component.html',
   styleUrl: './task-complete.component.scss'
 })
 export class TaskCompleteComponent {
-
+  formModel = {
+    inizio: '',
+    fine: '',
+    note: '',
+    nomeCognome: ''
+  };
 
   @ViewChild('canvas') canvas: ElementRef<HTMLCanvasElement>;
   signaturePad: SignaturePad;
+  id:number;
+  constructor(private odooEm: OdooEntityManager,private route: ActivatedRoute,private router: Router){
+
+  }
+
+  ngOnInit(): void {
+    // Subscribe to the route parameters to get the ID
+    this.route.params.subscribe(params => {
+      this.id = +params['id']; // The '+' operator converts the string to a number
+      console.log('Received ID:', this.id);
+      // Now you can use the ID as needed
+    });
+  }
 
   ngAfterViewInit(): void {
     // const signaturePad = new SignaturePad(this.canvas.nativeElement,
@@ -52,7 +75,45 @@ export class TaskCompleteComponent {
   resizeCanvas();
     
   }
+  onSubmit()
+  {
+    const jsonFields = this.prepareJsonFields();
+    const serializedObj = this.getSerializedObj();
+    this.odooEm.update<ProjectTask>(serializedObj, jsonFields).subscribe({
+      next: (response) => {
+        if (response) {
+          this.router.navigate(['/task-list']);
+        }
+      },
+      error: (error) => {
+        // Handle error
+        console.error('Update failed', error);
+      },
+    });
 
+  }
+
+  prepareJsonFields() {
+    return {
+      inizio: this.formModel.inizio,
+      fine: this.formModel.fine,
+      note: this.formModel.note,
+      nomeCognome: this.formModel.nomeCognome
+    };
+  }
+
+  getSerializedObj(): OdooSerializableInterface<any> {
+    return {
+      ODOO_MODEL: 'project_complete', // Replace with your actual Odoo model name
+      id: this.id, 
+      deserialize: (data: any) => {
+        return data;
+      },
+      fields: () => ['inizio', 'fine', 'note', 'nomeCognome'] // Implement fields method
+    } as OdooSerializableInterface<any>; // Ensure it casts to the right interface
+  }
+
+  // Optional: Reset signature method if needed
   onResetSignature() {
     this.signaturePad.clear()
   }

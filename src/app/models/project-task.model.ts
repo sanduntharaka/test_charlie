@@ -31,6 +31,10 @@ export class ProjectTask extends OdooModel implements OdooSerializableInterface<
   user_ids :OdooMultiRelationship<User> = new OdooMultiRelationship<User>(User)
   task_properties:any = null
   _stage: any
+  inizio: string;
+  fine: string;
+  note: string;
+  nomeCognome: string;
 
   constructor(id?: number, name?: string, sequence?:number) {
     super(id);
