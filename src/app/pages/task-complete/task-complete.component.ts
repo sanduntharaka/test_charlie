@@ -104,7 +104,7 @@ export class TaskCompleteComponent {
 
   getSerializedObj(): OdooSerializableInterface<any> {
     return {
-      ODOO_MODEL: 'project_complete', // Replace with your actual Odoo model name
+      ODOO_MODEL: 'project.task', // Replace with your actual Odoo model name
       id: this.id, 
       deserialize: (data: any) => {
         return data;
