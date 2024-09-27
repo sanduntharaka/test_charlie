@@ -1,35 +1,56 @@
 <nav class="navbar bg-primary fixed-top navbar-expand-lg navbar-light shadow-sm fixed-top d-flex">
-    <button class="btn btn-outline-white p-2" routerLink=".." type="button">
-        <i class="fa fa-arrow-left text-white"></i>
-    </button>
-    <span *ngIf="task" class="text-white p-2">{{task.partner_id.name}}</span>
-</nav>
 
-<div class="card m-3">
-    <div class="card-header">
-        <h5 class="card-title">{{task?.name}}</h5>
-        <p class="text-muted">{{task.partner_id.value?.street}} - {{task.partner_id.value?.city}}</p>
+    <div class="row align-items-center w-100">
+        <!-- Back Button Column -->
+        <div class="col-auto">
+            <button class="btn btn-outline-white p-2" routerLink=".." type="button">
+                <i class="fa fa-arrow-left text-white"></i>
+            </button>
+        </div>
+        <!-- Task Name Column -->
+        <div class="col-10">
+            <span *ngIf="task" class="text-white p-2">{{ task.partner_id.name }}</span>
+        </div>
+    </div>
+</nav>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card m-3">
+            <div class="card-header">
+                <h5 class="card-title">{{task?.name}}</h5>
+                <p class="text-muted">{{task.partner_id.value?.street}} - {{task.partner_id.value?.city}}</p>
+            </div>
+        </div>
     </div>
 </div>
 
-<ul class="list-group">
-    <li class="list-group-item text-muted fst-italic text-sm-left">Seleziona le task completate</li>
-    <li class="list-group-item" *ngFor="let task of tasks">
-        <div class="d-flex justify-content-between">
-            <span class="p-2 fw-bold">{{task?.name}} </span>
-            <i class="fa fa-circle" [ngClass]="{'text-success': this.taskTypeMap[task.stage_id.id], 'text-danger': !this.taskTypeMap[task.stage_id.id]}"></i>
-        </div>
-        <div class="d-flex">
-            <select class="form-select p-2" [compareWith]="compareStage" [(ngModel)]="task.stage_id" (ngModelChange)="moveTo($event, task)">
-                @for (stage of taskStages; track stage.id) {
-                    <option [ngValue]="stage">{{stage.name}}</option>
-                }
-            </select> 
-        </div>
-    </li>
-</ul>
-
-<div class="d-flex justify-content-center m-3">
-    <button class="btn btn-primary m-2" (click)="onComplete()">Concludi</button>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-group">
+            <li class="list-group-item text-muted fst-italic text-sm-left">Seleziona le task completate</li>
+            <li class="list-group-item" *ngFor="let task of tasks">
+                <div class="d-flex justify-content-between">
+                    <span class="p-2 fw-bold">{{task?.name}} </span>
+                    <i class="fa fa-circle"
+                        [ngClass]="{'text-success': this.taskTypeMap[task.stage_id.id], 'text-danger': !this.taskTypeMap[task.stage_id.id]}"></i>
+                </div>
+                <div class="d-flex">
+                    <select class="form-select p-2" [compareWith]="compareStage" [(ngModel)]="task.stage_id"
+                        (ngModelChange)="moveTo($event, task)">
+                        @for (stage of taskStages; track stage.id) {
+                        <option [ngValue]="stage">{{stage.name}}</option>
+                        }
+                    </select>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
 
+<div class="row">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-center m-3">
+            <button class="btn btn-primary m-2" (click)="onComplete()">Concludi</button>
+        </div>
+    </div>
+</div>

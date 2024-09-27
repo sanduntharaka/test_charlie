@@ -1,9 +1,17 @@
 <div class="container-fluid">
     <nav class="navbar bg-primary fixed-top navbar-expand-lg navbar-light shadow-sm">
-        <button class="btn btn-outline-white p-2" routerLink=".." type="button">
-            <i class="fa fa-arrow-left text-white"></i>
-        </button>
-        <span class="text-white p-2">Concludi</span>
+        <div class="row align-items-center w-100">
+            <!-- Back Button Column -->
+            <div class="col-auto">
+                <button class="btn btn-outline-white" routerLink=".." type="button">
+                    <i class="fa fa-arrow-left text-white"></i>
+                </button>
+            </div>
+            <!-- Task Name Column -->
+            <div class="col-10">
+                <span class="text-white">Concludi</span>
+            </div>
+        </div>
     </nav>
 
     <!-- <div class="row">
@@ -27,7 +35,7 @@
     </div> -->
 
 
-    <div class="container mt-5 pt-4">
+    <div class="mt-4 pt-4">
         <form (ngSubmit)="onSubmit()" #formData="ngForm">
             <div class="row mb-3">
                 <!-- Inizio Field -->
@@ -37,7 +45,7 @@
                         <input type="time" class="form-control" [(ngModel)]="formModel.inizio" name="inizio"
                             #inizio="ngModel" required />
                         <!-- Validation Error Message -->
-                    
+
                     </div>
                     <div *ngIf="inizio.invalid && inizio.touched" class="text-danger">
                         Inizio è richiesto
@@ -51,7 +59,7 @@
                         <input type="time" class="form-control" [(ngModel)]="formModel.fine" name="fine" #fine="ngModel"
                             required />
                         <!-- Validation Error Message -->
-                     
+
                     </div>
                     <div *ngIf="fine.invalid && fine.touched" class="text-danger">
                         Fine è richiesto
