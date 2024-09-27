@@ -9,10 +9,9 @@
 
 </div> -->
 
-<div class="row align-items-center justify-content-center h-100 p-5">
+<div class="d-flex align-items-center justify-content-center vh-100">
   <div class="col-12 col-sm-10 col-md-8 col-lg-6">
     <form class="form px-4 px-sm-5" style="max-width: 100%;">
-      <!-- <img src="https://static.wixstatic.com/media/76de08_4fb3836eb63b4803ba211bdf0fdaac31~mv2.gif" class="img-fluid mb-3"> -->
       <input class="form-control mb-3" [(ngModel)]="user" placeholder="Utente" name="user">
       <input class="form-control mb-3" [(ngModel)]="password" placeholder="Password" type="password" name="pwd">
       <a class="btn btn-primary btn-block w-100" data-test-id="loginButton" (click)="onLogin()">Accedi</a>
