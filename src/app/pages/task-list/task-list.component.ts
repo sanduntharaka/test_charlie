@@ -30,7 +30,7 @@ export class TaskListComponent implements OnInit {
     this.userId = info.result.user_id
 
     this.taskStages = await firstValueFrom(this.odooEm.search<ProjectTaskType>(new ProjectTaskType, [
-      ["user_id", "=", 2]
+      ["user_id", "=", 299]
     ]))
 
     await this.load()
