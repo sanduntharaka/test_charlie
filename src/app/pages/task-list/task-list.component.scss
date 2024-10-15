@@ -1,0 +1,32 @@
+.table {
+    border-collapse: separate; /* Ensures we can manage borders individually */
+    border-spacing: 0; 
+    border:1px solid #dee2e6;        /* Prevent spacing between table elements */
+}
+
+.table td {
+    border-top: 1px solid #dee2e6;              /* Remove all borders */
+    border-bottom: 1px solid #dee2e6; /* Add a bottom border for each row */
+}
+.dropdown {
+    text-align: center;
+}
+
+.dropdown-toggle {
+    min-width: 175px;
+}
+.dropdown-menu
+{
+    min-width: 175px;
+}
+.dropdown-item {
+    cursor: pointer;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+    &:hover {
+        background-color: #003838;
+        border-color: #003838;
+        color: #fff;
+    }
+}
