@@ -1,6 +1,6 @@
-import { OdooService } from "../services/odoo/odooService.js";
-import { createAndSendDocument } from "../services/pandadoc/pandadocService.js";
-import { uploadToS3, downloadFromS3, getSignatureURL, getPresignedUrl } from "../services/s3/s3Service.js";
+import { OdooService } from "../../services/odoo/odooService.js";
+import { createAndSendDocument } from "../../services/pandadoc/pandadocService.js";
+import { uploadToS3, downloadFromS3, getSignatureURL, getPresignedUrl } from "../../services/s3/s3Service.js";
 
 const odoo = new OdooService(
     process.env.ODOO_URL,

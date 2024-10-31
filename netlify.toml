@@ -11,7 +11,7 @@
 
 [[redirects]]
   from = "/node_api/*"
-  to = "/.netlify/functions/api/:splat"
+  to = "/.netlify/nodejs-rpc/functions/api/:splat"
   status = 200
   force = true
 
