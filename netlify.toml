@@ -4,4 +4,18 @@
 [functions]
   node_bundler = "esbuild"
 
+[[redirects]]
+  from = "/api/*"
+  to = "https://amanda.soluvia.io/:splat"
+  status = 200
 
+[[redirects]]
+  from = "/node_api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

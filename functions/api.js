@@ -43,10 +43,8 @@ const uploadsDir = path.join(__dirname, "uploads");
 app.use("/uploads", express.static(uploadsDir));
 
 // Routes
-app.use("/api_new/", documentRoutes);
+app.use("/node_api", documentRoutes);
 
-// Health check route
-app.get("/health", (req, res) => res.status(200).send("OK!"));
 
 // Error handling middleware
 app.use(errorHandler);

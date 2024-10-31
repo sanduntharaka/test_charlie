@@ -1,0 +1,4 @@
+/api/ * https://amanda.soluvia.io/:splat  200
+/node_api/ * /.netlify/functions / api /:splat  200
+
+/*  /index.html 200
