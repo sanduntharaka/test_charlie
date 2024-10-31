@@ -1,4 +1,0 @@
-/api/*  https://amanda.soluvia.io/:splat  200
-/api_new/*  /.netlify/functions/api/:splat  200
-
-/*  /index.html 200
