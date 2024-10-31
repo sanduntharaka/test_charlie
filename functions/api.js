@@ -16,8 +16,8 @@ import path from "path";
 // const documentRoutes = require("../routes/documentRoutes.js");
 // const errorHandler = require("../middleware/errorHandler.js");
 
-import documentRoutes from "../routes/documentRoutes.js";
-import errorHandler from "../middleware/errorHandler.js";
+import documentRoutes from "../nodejs-rpc/routes/documentRoutes.js";
+import errorHandler from "../nodejs-rpc/middleware/errorHandler.js";
 const serverless = require("serverless-http");
 
 
